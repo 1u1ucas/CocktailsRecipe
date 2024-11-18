@@ -8,29 +8,48 @@ const handleIncrement = () => {
     setCount(count + 1);
 }
 
+const handleDecrement = () => {
+    if (count === 0) {
+        return;
+    }
+    setCount(count - 1);
+}
+
 return (
     <View style={styles.container}>
       <Text style={styles.title}>Compteur de verre</Text>
-      <Text style={styles.count}>{count}</Text>
-      <Button title="Increment" onPress={handleIncrement} />
+      <View style={styles.buttonContainer}>
+      <Button title="-" onPress={handleDecrement} />
+        <Text style={styles.count}>{count}</Text>
+        <Button title="+" onPress={handleIncrement} />
+      </View>
+      
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f5f5f5',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  count: {
-    fontSize: 48,
-    marginBottom: 20,
-  },
+    container: {
+        flex: 1,
+        width: '100%',
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginTop: 20,
+        alignSelf: 'center',
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 20,
+    },
+    count: {
+        fontSize: 24,
+        marginHorizontal: 20,
+    }
 });
